@@ -35,8 +35,11 @@ static NSMutableDictionary *titleImagePairs;
                  action:(SEL)action
                   image:(UIImage *)image
 {
-  title = [title cxa_stringByWrappingInvisibleIdentifiers];
-  if ([self initWithTitle:title action:action]){
+  if (title)
+    title = [title cxa_stringByWrappingInvisibleIdentifiers];
+  
+  if ([self initWithTitle:title action:action] &&
+      title){
     titleImagePairs[title] = image;
   }
   
@@ -46,7 +49,11 @@ static NSMutableDictionary *titleImagePairs;
 - (void)cxa_setImage:(UIImage *)image
             forTitle:(NSString *)title
 {
+  if (!title)
+    @throw [NSException exceptionWithName:@"CXAImageMenuItem" reason:@"title can't be nil" userInfo:nil];
+    
   title = [title cxa_stringByWrappingInvisibleIdentifiers];
+  self.title = title;
   titleImagePairs[title] = image;
 }
 
