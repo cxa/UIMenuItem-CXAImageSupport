@@ -16,6 +16,12 @@
 		E058E168169493BD009A0BCE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E167169493BD009A0BCE /* Default.png */; };
 		E058E16A169493BD009A0BCE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E169169493BD009A0BCE /* Default@2x.png */; };
 		E058E16C169493BD009A0BCE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E16B169493BD009A0BCE /* Default-568h@2x.png */; };
+		E058E17516949402009A0BCE /* CXADemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E058E17416949402009A0BCE /* CXADemoViewController.m */; };
+		E058E18A1694A40D009A0BCE /* broom.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1861694A40D009A0BCE /* broom.png */; };
+		E058E18B1694A40D009A0BCE /* broom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1871694A40D009A0BCE /* broom@2x.png */; };
+		E058E18C1694A40D009A0BCE /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1881694A40D009A0BCE /* camera.png */; };
+		E058E18D1694A40D009A0BCE /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1891694A40D009A0BCE /* camera@2x.png */; };
+		E058E1901694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E058E18F1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,14 @@
 		E058E167169493BD009A0BCE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E058E169169493BD009A0BCE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E058E16B169493BD009A0BCE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E058E17316949402009A0BCE /* CXADemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXADemoViewController.h; sourceTree = "<group>"; };
+		E058E17416949402009A0BCE /* CXADemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXADemoViewController.m; sourceTree = "<group>"; };
+		E058E1861694A40D009A0BCE /* broom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = broom.png; sourceTree = "<group>"; };
+		E058E1871694A40D009A0BCE /* broom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "broom@2x.png"; sourceTree = "<group>"; };
+		E058E1881694A40D009A0BCE /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		E058E1891694A40D009A0BCE /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		E058E18E1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIMenuItem+CXAImageMenuItem.h"; path = "CXAMenuItem/UIMenuItem+CXAImageMenuItem.h"; sourceTree = "<group>"; };
+		E058E18F1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIMenuItem+CXAImageMenuItem.m"; path = "CXAMenuItem/UIMenuItem+CXAImageMenuItem.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +65,8 @@
 		E058E146169493BD009A0BCE = {
 			isa = PBXGroup;
 			children = (
-				E058E15B169493BD009A0BCE /* CXAMenuItem */,
+				E058E172169493DB009A0BCE /* CXAMenuItem */,
+				E058E15B169493BD009A0BCE /* CXAMenuItemDemo */,
 				E058E154169493BD009A0BCE /* Frameworks */,
 				E058E152169493BD009A0BCE /* Products */,
 			);
@@ -75,19 +90,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E058E15B169493BD009A0BCE /* CXAMenuItem */ = {
+		E058E15B169493BD009A0BCE /* CXAMenuItemDemo */ = {
 			isa = PBXGroup;
 			children = (
 				E058E164169493BD009A0BCE /* CXAAppDelegate.h */,
 				E058E165169493BD009A0BCE /* CXAAppDelegate.m */,
+				E058E17316949402009A0BCE /* CXADemoViewController.h */,
+				E058E17416949402009A0BCE /* CXADemoViewController.m */,
 				E058E15C169493BD009A0BCE /* Supporting Files */,
 			);
+			name = CXAMenuItemDemo;
 			path = CXAMenuItem;
 			sourceTree = "<group>";
 		};
 		E058E15C169493BD009A0BCE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E058E1861694A40D009A0BCE /* broom.png */,
+				E058E1871694A40D009A0BCE /* broom@2x.png */,
+				E058E1881694A40D009A0BCE /* camera.png */,
+				E058E1891694A40D009A0BCE /* camera@2x.png */,
 				E058E15D169493BD009A0BCE /* CXAMenuItem-Info.plist */,
 				E058E15E169493BD009A0BCE /* InfoPlist.strings */,
 				E058E161169493BD009A0BCE /* main.m */,
@@ -97,6 +119,15 @@
 				E058E16B169493BD009A0BCE /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E058E172169493DB009A0BCE /* CXAMenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				E058E18E1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.h */,
+				E058E18F1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m */,
+			);
+			name = CXAMenuItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +186,10 @@
 				E058E168169493BD009A0BCE /* Default.png in Resources */,
 				E058E16A169493BD009A0BCE /* Default@2x.png in Resources */,
 				E058E16C169493BD009A0BCE /* Default-568h@2x.png in Resources */,
+				E058E18A1694A40D009A0BCE /* broom.png in Resources */,
+				E058E18B1694A40D009A0BCE /* broom@2x.png in Resources */,
+				E058E18C1694A40D009A0BCE /* camera.png in Resources */,
+				E058E18D1694A40D009A0BCE /* camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +202,8 @@
 			files = (
 				E058E162169493BD009A0BCE /* main.m in Sources */,
 				E058E166169493BD009A0BCE /* CXAAppDelegate.m in Sources */,
+				E058E17516949402009A0BCE /* CXADemoViewController.m in Sources */,
+				E058E1901694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
