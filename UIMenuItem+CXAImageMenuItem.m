@@ -12,6 +12,7 @@
 #define INVISIBLE_IDENTIFER @"\uFEFF\u200B"
 
 static NSMutableDictionary *titleImagePairs;
+static NSMutableDictionary *titleHidesShadowPairs;
 
 @interface NSString (CXAImageMenuItem)
 
@@ -28,33 +29,54 @@ static NSMutableDictionary *titleImagePairs;
   static dispatch_once_t once;
   dispatch_once(&once, ^{
     titleImagePairs = [@{} mutableCopy];
+    titleHidesShadowPairs = [@{} mutableCopy];
   });
+}
+
++ (void)dealloc
+{
+  titleImagePairs = nil;
+  titleHidesShadowPairs = nil;
 }
 
 - (id)cxa_initWithTitle:(NSString *)title
                  action:(SEL)action
                   image:(UIImage *)image
 {
-  if (title)
-    title = [title cxa_stringByWrappingInvisibleIdentifiers];
-  
-  if ([self initWithTitle:title action:action] &&
+  return [self cxa_initWithTitle:title action:action image:image hidesShadow:NO];
+}
+
+- (id)cxa_initWithTitle:(NSString *)title
+                 action:(SEL)action
+                  image:(UIImage *)image
+            hidesShadow:(BOOL)hidesShadow
+{  
+  if ([self initWithTitle:nil action:action] &&
       title){
-    titleImagePairs[title] = image;
+    [self cxa_setImage:image hidesShadow:hidesShadow forTitle:title];
   }
   
   return self;
+
 }
 
 - (void)cxa_setImage:(UIImage *)image
             forTitle:(NSString *)title
 {
+  [self cxa_setImage:image hidesShadow:NO forTitle:title];
+}
+
+- (void)cxa_setImage:(UIImage *)image
+         hidesShadow:(BOOL)hidesShadow
+            forTitle:(NSString *)title
+{
   if (!title)
     @throw [NSException exceptionWithName:@"CXAImageMenuItem" reason:@"title can't be nil" userInfo:nil];
-    
+  
   title = [title cxa_stringByWrappingInvisibleIdentifiers];
   self.title = title;
   titleImagePairs[title] = image;
+  titleHidesShadowPairs[title] = hidesShadow ? @YES : @NO;
 }
 
 @end
@@ -82,9 +104,11 @@ static NSMutableDictionary *titleImagePairs;
 #pragma mark -
 
 static void (*origDrawTextInRect)(id, SEL, CGRect);
-static void drawImageInRect(id, SEL, CGRect);
+static void newDrawTextInRect(id, SEL, CGRect);
+static void (*origSetFrame)(id, SEL, CGRect);
+static void newSetFrame(id, SEL, CGRect);
 static CGSize (*origSizeWithFont)(id, SEL, id);
-static CGSize sizeWithFontForImage(id, SEL, id);
+static CGSize newSizeWithFont(id, SEL, id);
 
 @interface UILabel (CXAImageMenuItem) @end
 
@@ -94,24 +118,29 @@ static CGSize sizeWithFontForImage(id, SEL, id);
 {
   Method origMethod = class_getInstanceMethod(self, @selector(drawTextInRect:));
   origDrawTextInRect = (void *)method_getImplementation(origMethod);
-  if (!class_addMethod(self, @selector(drawTextInRect:), (IMP)drawImageInRect, method_getTypeEncoding(origMethod)))
-    method_setImplementation(origMethod, (IMP)drawImageInRect);
+  if (!class_addMethod(self, @selector(drawTextInRect:), (IMP)newDrawTextInRect, method_getTypeEncoding(origMethod)))
+    method_setImplementation(origMethod, (IMP)newDrawTextInRect);
+  
+  origMethod = class_getInstanceMethod(self, @selector(setFrame:));
+  origSetFrame = (void *)method_getImplementation(origMethod);
+  if (!class_addMethod(self, @selector(setFrame:), (IMP)newSetFrame, method_getTypeEncoding(origMethod)))
+    method_setImplementation(origMethod, (IMP)newSetFrame);
   
   origMethod = class_getInstanceMethod([NSString class], @selector(sizeWithFont:));
   origSizeWithFont = (void *)method_getImplementation(origMethod);
-  if (!class_addMethod([NSString class], @selector(sizeWithFont:), (IMP)sizeWithFontForImage, method_getTypeEncoding(origMethod)))
-    method_setImplementation(origMethod, (IMP)sizeWithFontForImage);
+  if (!class_addMethod([NSString class], @selector(sizeWithFont:), (IMP)newSizeWithFont, method_getTypeEncoding(origMethod)))
+    method_setImplementation(origMethod, (IMP)newSizeWithFont);
 }
 
 @end
 
-static void drawImageInRect(UILabel *self, SEL _cmd, CGRect rect)
+static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
 {
   if (![self.text cxa_doesWrapInvisibleIdentifiers]){
     origDrawTextInRect(self, @selector(drawTextInRect:), rect);
     return;
   }
-  
+
   UIImage *img = titleImagePairs[self.text];
   CGSize size = img.size;
   CGPoint point = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -119,14 +148,32 @@ static void drawImageInRect(UILabel *self, SEL _cmd, CGRect rect)
   point.y -= size.height/2;
   point.x = ceilf(point.x);
   point.y = ceilf(point.y);
+  
+  BOOL drawsShadow = ![titleHidesShadowPairs[self.text] boolValue];
+  CGContextRef context;
+  if (drawsShadow){
+    context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0, [[UIColor blackColor] colorWithAlphaComponent:1./3.].CGColor);
+  }
+  
   [img drawAtPoint:point];
+  if (drawsShadow)
+    CGContextRestoreGState(context);
 }
 
-static CGSize sizeWithFontForImage(NSString *self, SEL _cmd, UIFont *font)
+static void newSetFrame(UILabel *self, SEL _cmd, CGRect rect)
+{
+  if ([self.text cxa_doesWrapInvisibleIdentifiers])
+    rect = self.superview.bounds;
+  
+  origSetFrame(self, @selector(setFrame:), rect);
+}
+
+static CGSize newSizeWithFont(NSString *self, SEL _cmd, UIFont *font)
 {
   if ([self cxa_doesWrapInvisibleIdentifiers])
     return [titleImagePairs[self] size];
   
   return origSizeWithFont(self, _cmd, font);
 }
-

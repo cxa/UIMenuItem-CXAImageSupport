@@ -21,7 +21,7 @@
 		E058E18B1694A40D009A0BCE /* broom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1871694A40D009A0BCE /* broom@2x.png */; };
 		E058E18C1694A40D009A0BCE /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1881694A40D009A0BCE /* camera.png */; };
 		E058E18D1694A40D009A0BCE /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1891694A40D009A0BCE /* camera@2x.png */; };
-		E058E1901694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E058E18F1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m */; };
+		E058E1A0169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +44,8 @@
 		E058E1871694A40D009A0BCE /* broom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "broom@2x.png"; sourceTree = "<group>"; };
 		E058E1881694A40D009A0BCE /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		E058E1891694A40D009A0BCE /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
-		E058E18E1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIMenuItem+CXAImageMenuItem.h"; path = "CXAMenuItem/UIMenuItem+CXAImageMenuItem.h"; sourceTree = "<group>"; };
-		E058E18F1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIMenuItem+CXAImageMenuItem.m"; path = "CXAMenuItem/UIMenuItem+CXAImageMenuItem.m"; sourceTree = "<group>"; };
+		E058E19E169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageMenuItem.h"; sourceTree = "<group>"; };
+		E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageMenuItem.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 				E058E15C169493BD009A0BCE /* Supporting Files */,
 			);
 			name = CXAMenuItemDemo;
-			path = CXAMenuItem;
+			path = CXAMenuItemDemo;
 			sourceTree = "<group>";
 		};
 		E058E15C169493BD009A0BCE /* Supporting Files */ = {
@@ -124,8 +124,8 @@
 		E058E172169493DB009A0BCE /* CXAMenuItem */ = {
 			isa = PBXGroup;
 			children = (
-				E058E18E1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.h */,
-				E058E18F1694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m */,
+				E058E19E169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.h */,
+				E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.m */,
 			);
 			name = CXAMenuItem;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 				E058E162169493BD009A0BCE /* main.m in Sources */,
 				E058E166169493BD009A0BCE /* CXAAppDelegate.m in Sources */,
 				E058E17516949402009A0BCE /* CXADemoViewController.m in Sources */,
-				E058E1901694AF83009A0BCE /* UIMenuItem+CXAImageMenuItem.m in Sources */,
+				E058E1A0169583B2009A0BCE /* UIMenuItem+CXAImageMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +312,7 @@
 				E058E171169493BD009A0BCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

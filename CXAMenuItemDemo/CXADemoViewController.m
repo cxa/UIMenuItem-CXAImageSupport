@@ -47,12 +47,12 @@
   _label.textColor = [UIColor whiteColor];
   _label.backgroundColor = [UIColor clearColor];
   _label.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:.75];
-  _label.shadowOffset = CGSizeMake(0, 1);
+  _label.shadowOffset = CGSizeMake(0, -1);
   _label.numberOfLines = 0;
   _label.text = NSLocalizedString(@"Under MIT License.\n(c) 2013 CHEN Xian'an\n<xianan.chen@gmail.com>", nil);
   [self.view addSubview:_label];
   UIMenuItem *cameraItem = [[UIMenuItem alloc] initWithTitle:nil action:@selector(cameraAction:)];
-  [cameraItem cxa_setImage:[UIImage imageNamed:@"camera"] forTitle:NSLocalizedString(@"Camera", nil)];
+  [cameraItem cxa_setImage:[UIImage imageNamed:@"camera"] hidesShadow:YES forTitle:NSLocalizedString(@"Camera", nil)];
   UIMenuItem *broomItem = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Broom", nil) action:@selector(broomAction:) image:[UIImage imageNamed:@"broom"]];
   UIMenuItem *textItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"No Image", nil) action:@selector(textAction:)];
   [UIMenuController sharedMenuController].menuItems = @[cameraItem, broomItem, textItem];
