@@ -73,7 +73,7 @@ static NSMutableDictionary *titleImagePairs;
   if (!doesStartMatch)
     return NO;
   
-  BOOL doesEndMatch = [self rangeOfString:INVISIBLE_IDENTIFER options:NSBackwardsSearch].location != NSNotFound;
+  BOOL doesEndMatch = [self rangeOfString:INVISIBLE_IDENTIFER options:NSAnchoredSearch | NSBackwardsSearch].location != NSNotFound;
   return doesEndMatch;
 }
 
@@ -83,6 +83,8 @@ static NSMutableDictionary *titleImagePairs;
 
 static void (*origDrawTextInRect)(id, SEL, CGRect);
 static void drawImageInRect(id, SEL, CGRect);
+static CGSize (*origSizeWithFont)(id, SEL, id);
+static CGSize sizeWithFontForImage(id, SEL, id);
 
 @interface UILabel (CXAImageMenuItem) @end
 
@@ -94,6 +96,11 @@ static void drawImageInRect(id, SEL, CGRect);
   origDrawTextInRect = (void *)method_getImplementation(origMethod);
   if (!class_addMethod(self, @selector(drawTextInRect:), (IMP)drawImageInRect, method_getTypeEncoding(origMethod)))
     method_setImplementation(origMethod, (IMP)drawImageInRect);
+  
+  origMethod = class_getInstanceMethod([NSString class], @selector(sizeWithFont:));
+  origSizeWithFont = (void *)method_getImplementation(origMethod);
+  if (!class_addMethod([NSString class], @selector(sizeWithFont:), (IMP)sizeWithFontForImage, method_getTypeEncoding(origMethod)))
+    method_setImplementation(origMethod, (IMP)sizeWithFontForImage);
 }
 
 @end
@@ -113,5 +120,13 @@ static void drawImageInRect(UILabel *self, SEL _cmd, CGRect rect)
   point.x = ceilf(point.x);
   point.y = ceilf(point.y);
   [img drawAtPoint:point];
+}
+
+static CGSize sizeWithFontForImage(NSString *self, SEL _cmd, UIFont *font)
+{
+  if ([self cxa_doesWrapInvisibleIdentifiers])
+    return [titleImagePairs[self] size];
+  
+  return origSizeWithFont(self, _cmd, font);
 }
 
