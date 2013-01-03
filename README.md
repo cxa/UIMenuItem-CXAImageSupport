@@ -1,6 +1,6 @@
 # UIMenuItem with Image Support
 
-![Image item screenshot](/cxa/CXAImageMenuItem/raw/screenshot.jpg)
+![Image item screenshot](https://raw.github.com/cxa/CXAImageMenuItem/master/screenshot.jpg)
 
 `UIMenuItem` uses `UILabel` to display its title, that means we can swizzle `-drawTextInRect:` to support image.
 
