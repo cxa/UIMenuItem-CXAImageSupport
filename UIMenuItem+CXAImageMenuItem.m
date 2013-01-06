@@ -136,7 +136,8 @@ static CGSize newSizeWithFont(id, SEL, id);
 
 static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
 {
-  if (![self.text cxa_doesWrapInvisibleIdentifiers]){
+  if (![self.text cxa_doesWrapInvisibleIdentifiers] ||
+      !titleImagePairs[self.text]){
     origDrawTextInRect(self, @selector(drawTextInRect:), rect);
     return;
   }
@@ -172,7 +173,8 @@ static void newSetFrame(UILabel *self, SEL _cmd, CGRect rect)
 
 static CGSize newSizeWithFont(NSString *self, SEL _cmd, UIFont *font)
 {
-  if ([self cxa_doesWrapInvisibleIdentifiers])
+  if ([self cxa_doesWrapInvisibleIdentifiers] &&
+      titleImagePairs[self])
     return [titleImagePairs[self] size];
   
   return origSizeWithFont(self, _cmd, font);

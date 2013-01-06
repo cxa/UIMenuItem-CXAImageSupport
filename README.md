@@ -25,8 +25,9 @@ The method names describe all. Default draws shadow as the text title. If you wa
 
 ## Creator
 
-* GitHub: [https://github.com/cxa/](https://github.com/cxa/)
+* GitHub: <https://github.com/cxa>
 * Twitter: [@_cxa](https://twitter.com/_cxa)
+* Apps available in App Store: <http://lazyapps.com>
 
 ## License
 
