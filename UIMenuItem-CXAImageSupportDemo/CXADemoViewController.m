@@ -7,7 +7,7 @@
 //
 
 #import "CXADemoViewController.h"
-#import "UIMenuItem+CXAImageMenuItem.h"
+#import "UIMenuItem+CXAImageSupport.h"
 
 @interface CXADemoViewController(){
   UIButton *_button;

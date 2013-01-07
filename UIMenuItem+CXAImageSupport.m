@@ -1,12 +1,12 @@
 //
-//  UIMenuItem+CXAImageMenuItem.m
+//  UIMenuItem+CXAImageSupport.m
 //  CXAMenuItem
 //
 //  Created by Chen Xian'an on 1/3/13.
 //  Copyright (c) 2013 lazyapps. All rights reserved.
 //
 
-#import "UIMenuItem+CXAImageMenuItem.h"
+#import "UIMenuItem+CXAImageSupport.h"
 #import <objc/runtime.h>
 
 #define INVISIBLE_IDENTIFER @"\uFEFF\u200B"
@@ -14,7 +14,7 @@
 static NSMutableDictionary *titleImagePairs;
 static NSMutableDictionary *titleHidesShadowPairs;
 
-@interface NSString (CXAImageMenuItem)
+@interface NSString (CXAImageSupport)
 
 - (NSString *)cxa_stringByWrappingInvisibleIdentifiers;
 - (BOOL)cxa_doesWrapInvisibleIdentifiers;
@@ -22,7 +22,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
 @end
 
 #pragma mark -
-@implementation UIMenuItem (CXAImageMenuItem)
+@implementation UIMenuItem (CXAImageSupport)
 
 + (void)load
 {
@@ -71,7 +71,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
             forTitle:(NSString *)title
 {
   if (!title)
-    @throw [NSException exceptionWithName:@"CXAImageMenuItem" reason:@"title can't be nil" userInfo:nil];
+    @throw [NSException exceptionWithName:@"CXAImageSupport" reason:@"title can't be nil" userInfo:nil];
   
   title = [title cxa_stringByWrappingInvisibleIdentifiers];
   self.title = title;
@@ -82,7 +82,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
 @end
 
 #pragma mark -
-@implementation NSString (CXAImageMenuItem)
+@implementation NSString (CXAImageSupport)
 
 - (NSString *)cxa_stringByWrappingInvisibleIdentifiers
 {
@@ -110,9 +110,9 @@ static void newSetFrame(id, SEL, CGRect);
 static CGSize (*origSizeWithFont)(id, SEL, id);
 static CGSize newSizeWithFont(id, SEL, id);
 
-@interface UILabel (CXAImageMenuItem) @end
+@interface UILabel (CXAImageSupport) @end
 
-@implementation UILabel (CXAImageMenuItem)
+@implementation UILabel (CXAImageSupport)
 
 + (void)load
 {

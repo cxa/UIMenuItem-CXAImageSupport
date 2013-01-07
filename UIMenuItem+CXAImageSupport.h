@@ -1,5 +1,5 @@
 //
-//  UIMenuItem+CXAImageMenuItem.h
+//  UIMenuItem+CXAImageSupport.h
 //  CXAMenuItem
 //
 //  Created by Chen Xian'an on 1/3/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIMenuItem (CXAImageMenuItem)
+@interface UIMenuItem (CXAImageSupport)
 
 - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
 - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image hidesShadow:(BOOL)hidesShadow;
