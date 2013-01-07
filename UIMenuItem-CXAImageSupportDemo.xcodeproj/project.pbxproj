@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIMenuItem-CXAImageSupport; sourceTree = BUILT_PRODUCTS_DIR; };
+		E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "UIMenuItem-CXAImageSupport"; path = "UIMenuItem+CXAImageSupport Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E058E155169493BD009A0BCE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E058E157169493BD009A0BCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E058E159169493BD009A0BCE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,8 +65,8 @@
 		E058E146169493BD009A0BCE = {
 			isa = PBXGroup;
 			children = (
-				E058E172169493DB009A0BCE /* CXAMenuItem */,
-				E058E15B169493BD009A0BCE /* CXAMenuItemDemo */,
+				E058E172169493DB009A0BCE /* UIMenuItem+CXAImageSupport */,
+				E058E15B169493BD009A0BCE /* Demo */,
 				E058E154169493BD009A0BCE /* Frameworks */,
 				E058E152169493BD009A0BCE /* Products */,
 			);
@@ -75,7 +75,7 @@
 		E058E152169493BD009A0BCE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E058E151169493BD009A0BCE /* UIMenuItem+CXAImageSupport */,
+				E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +90,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E058E15B169493BD009A0BCE /* CXAMenuItemDemo */ = {
+		E058E15B169493BD009A0BCE /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				E058E164169493BD009A0BCE /* CXAAppDelegate.h */,
@@ -99,7 +99,7 @@
 				E058E17416949402009A0BCE /* CXADemoViewController.m */,
 				E058E15C169493BD009A0BCE /* Supporting Files */,
 			);
-			name = CXAMenuItemDemo;
+			name = Demo;
 			path = "UIMenuItem-CXAImageSupportDemo";
 			sourceTree = "<group>";
 		};
@@ -121,13 +121,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E058E172169493DB009A0BCE /* CXAMenuItem */ = {
+		E058E172169493DB009A0BCE /* UIMenuItem+CXAImageSupport */ = {
 			isa = PBXGroup;
 			children = (
 				E058E19E169583B2009A0BCE /* UIMenuItem+CXAImageSupport.h */,
 				E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m */,
 			);
-			name = CXAMenuItem;
+			name = "UIMenuItem+CXAImageSupport";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +147,7 @@
 			);
 			name = "UIMenuItem+CXAImageSupport Demo";
 			productName = CXAMenuItem;
-			productReference = E058E151169493BD009A0BCE /* UIMenuItem+CXAImageSupport */;
+			productReference = E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

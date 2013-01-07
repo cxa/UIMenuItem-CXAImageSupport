@@ -9,7 +9,7 @@
 #import "UIMenuItem+CXAImageSupport.h"
 #import <objc/runtime.h>
 
-#define INVISIBLE_IDENTIFER @"\uFEFF\u200B"
+#define INVISIBLE_IDENTIFIER @"\uFEFF\u200B"
 
 static NSMutableDictionary *titleImagePairs;
 static NSMutableDictionary *titleHidesShadowPairs;
@@ -86,16 +86,16 @@ static NSMutableDictionary *titleHidesShadowPairs;
 
 - (NSString *)cxa_stringByWrappingInvisibleIdentifiers
 {
-  return [NSString stringWithFormat:@"%@%@%@", INVISIBLE_IDENTIFER, self, INVISIBLE_IDENTIFER];
+  return [NSString stringWithFormat:@"%@%@%@", INVISIBLE_IDENTIFIER, self, INVISIBLE_IDENTIFIER];
 }
 
 - (BOOL)cxa_doesWrapInvisibleIdentifiers
 {
-  BOOL doesStartMatch = [self rangeOfString:INVISIBLE_IDENTIFER options:NSAnchoredSearch].location != NSNotFound;
+  BOOL doesStartMatch = [self rangeOfString:INVISIBLE_IDENTIFIER options:NSAnchoredSearch].location != NSNotFound;
   if (!doesStartMatch)
     return NO;
   
-  BOOL doesEndMatch = [self rangeOfString:INVISIBLE_IDENTIFER options:NSAnchoredSearch | NSBackwardsSearch].location != NSNotFound;
+  BOOL doesEndMatch = [self rangeOfString:INVISIBLE_IDENTIFIER options:NSAnchoredSearch | NSBackwardsSearch].location != NSNotFound;
   return doesEndMatch;
 }
 
