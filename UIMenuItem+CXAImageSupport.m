@@ -1,8 +1,8 @@
 //
 //  UIMenuItem+CXAImageSupport.m
-//  CXAMenuItem
+//  UIMenuItem+CXAImageSupport
 //
-//  Created by Chen Xian'an on 1/3/13.
+//  Created by CHEN Xian'an on 1/3/13.
 //  Copyright (c) 2013 lazyapps. All rights reserved.
 //
 
@@ -21,7 +21,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
 
 @end
 
-#pragma mark -
+#pragma mark - UIMenuItem CXAImageSupport category
 @implementation UIMenuItem (CXAImageSupport)
 
 + (void)load
@@ -50,14 +50,12 @@ static NSMutableDictionary *titleHidesShadowPairs;
                  action:(SEL)action
                   image:(UIImage *)image
             hidesShadow:(BOOL)hidesShadow
-{  
-  if ([self initWithTitle:nil action:action] &&
-      title){
-    [self cxa_setImage:image hidesShadow:hidesShadow forTitle:title];
-  }
+{
+  id item = [self initWithTitle:nil action:action];
+  if (item)
+    [item cxa_setImage:image hidesShadow:hidesShadow forTitle:title];
   
-  return self;
-
+  return item;
 }
 
 - (void)cxa_setImage:(UIImage *)image
@@ -71,7 +69,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
             forTitle:(NSString *)title
 {
   if (!title)
-    @throw [NSException exceptionWithName:@"CXAImageSupport" reason:@"title can't be nil" userInfo:nil];
+    @throw [NSException exceptionWithName:@"UIMenuItem+CXAImageSupport" reason:@"title can't be nil" userInfo:nil];
   
   title = [title cxa_stringByWrappingInvisibleIdentifiers];
   self.title = title;
@@ -81,7 +79,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
 
 @end
 
-#pragma mark -
+#pragma mark - NSString helper category
 @implementation NSString (CXAImageSupport)
 
 - (NSString *)cxa_stringByWrappingInvisibleIdentifiers
@@ -101,7 +99,7 @@ static NSMutableDictionary *titleHidesShadowPairs;
 
 @end
 
-#pragma mark -
+#pragma mark - Method swizzling
 
 static void (*origDrawTextInRect)(id, SEL, CGRect);
 static void newDrawTextInRect(id, SEL, CGRect);
@@ -145,10 +143,8 @@ static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
   UIImage *img = titleImagePairs[self.text];
   CGSize size = img.size;
   CGPoint point = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-  point.x -= size.width/2;
-  point.y -= size.height/2;
-  point.x = ceilf(point.x);
-  point.y = ceilf(point.y);
+  point.x = ceilf(point.x - size.width/2);
+  point.y = ceilf(point.y - size.height/2);
   
   BOOL drawsShadow = ![titleHidesShadowPairs[self.text] boolValue];
   CGContextRef context;
@@ -165,7 +161,8 @@ static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
 
 static void newSetFrame(UILabel *self, SEL _cmd, CGRect rect)
 {
-  if ([self.text cxa_doesWrapInvisibleIdentifiers])
+  if ([self.text cxa_doesWrapInvisibleIdentifiers] &&
+      titleImagePairs[self.text])
     rect = self.superview.bounds;
   
   origSetFrame(self, @selector(setFrame:), rect);

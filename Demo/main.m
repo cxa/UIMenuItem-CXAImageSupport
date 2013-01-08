@@ -1,8 +1,8 @@
 //
 //  main.m
-//  CXAMenuItem
+//  UIMenuItem+CXAImageSupport
 //
-//  Created by Chen Xian'an on 1/3/13.
+//  Created by CHEN Xian'an on 1/3/13.
 //  Copyright (c) 2013 lazyapps. All rights reserved.
 //
 
@@ -13,6 +13,6 @@
 int main(int argc, char *argv[])
 {
   @autoreleasepool {
-      return UIApplicationMain(argc, argv, nil, NSStringFromClass([CXAAppDelegate class]));
+    return UIApplicationMain(argc, argv, nil, NSStringFromClass([CXAAppDelegate class]));
   }
 }

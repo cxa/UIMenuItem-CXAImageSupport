@@ -31,7 +31,7 @@
 		E058E159169493BD009A0BCE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E058E15F169493BD009A0BCE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E058E161169493BD009A0BCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E058E163169493BD009A0BCE /* UIMenuItem-CXAImageSupportDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem-CXAImageSupportDemo-Prefix.pch"; sourceTree = "<group>"; };
+		E058E163169493BD009A0BCE /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
 		E058E164169493BD009A0BCE /* CXAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXAAppDelegate.h; sourceTree = "<group>"; };
 		E058E165169493BD009A0BCE /* CXAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXAAppDelegate.m; sourceTree = "<group>"; };
 		E058E167169493BD009A0BCE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		E058E1891694A40D009A0BCE /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		E058E19E169583B2009A0BCE /* UIMenuItem+CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageSupport.h"; sourceTree = "<group>"; };
 		E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageSupport.m"; sourceTree = "<group>"; };
-		E07759F6169B2FF500151A23 /* UIMenuItem-CXAImageSupportDemo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UIMenuItem-CXAImageSupportDemo.plist"; sourceTree = "<group>"; };
+		E07759F6169B2FF500151A23 /* Demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Demo.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 				E058E15C169493BD009A0BCE /* Supporting Files */,
 			);
 			name = Demo;
-			path = "UIMenuItem-CXAImageSupportDemo";
+			path = "Demo";
 			sourceTree = "<group>";
 		};
 		E058E15C169493BD009A0BCE /* Supporting Files */ = {
@@ -112,8 +112,8 @@
 				E058E1891694A40D009A0BCE /* camera@2x.png */,
 				E058E15E169493BD009A0BCE /* InfoPlist.strings */,
 				E058E161169493BD009A0BCE /* main.m */,
-				E07759F6169B2FF500151A23 /* UIMenuItem-CXAImageSupportDemo.plist */,
-				E058E163169493BD009A0BCE /* UIMenuItem-CXAImageSupportDemo-Prefix.pch */,
+				E07759F6169B2FF500151A23 /* Demo.plist */,
+				E058E163169493BD009A0BCE /* Demo-Prefix.pch */,
 				E058E167169493BD009A0BCE /* Default.png */,
 				E058E169169493BD009A0BCE /* Default@2x.png */,
 				E058E16B169493BD009A0BCE /* Default-568h@2x.png */,
@@ -160,7 +160,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = lazyapps;
 			};
-			buildConfigurationList = E058E14B169493BD009A0BCE /* Build configuration list for PBXProject "UIMenuItem-CXAImageSupportDemo" */;
+			buildConfigurationList = E058E14B169493BD009A0BCE /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -275,8 +275,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UIMenuItem-CXAImageSupportDemo/UIMenuItem-CXAImageSupportDemo-Prefix.pch";
-				INFOPLIST_FILE = "UIMenuItem-CXAImageSupportDemo/UIMenuItem-CXAImageSupportDemo.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Demo.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,8 +286,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UIMenuItem-CXAImageSupportDemo/UIMenuItem-CXAImageSupportDemo-Prefix.pch";
-				INFOPLIST_FILE = "UIMenuItem-CXAImageSupportDemo/UIMenuItem-CXAImageSupportDemo.plist";
+				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/Demo.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -296,7 +296,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E058E14B169493BD009A0BCE /* Build configuration list for PBXProject "UIMenuItem-CXAImageSupportDemo" */ = {
+		E058E14B169493BD009A0BCE /* Build configuration list for PBXProject "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E058E16D169493BD009A0BCE /* Debug */,

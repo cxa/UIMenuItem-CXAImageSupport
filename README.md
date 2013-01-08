@@ -1,12 +1,12 @@
 # UIMenuItem with Image Support
 
-![Image item screenshot](https://raw.github.com/cxa/UIMenuItem-CXAImageSupport/master/screenshot.jpg)
+![screenshot of UIMenuItem with image](https://raw.github.com/cxa/UIMenuItem-CXAImageSupport/master/screenshot.jpg)
 
 `UIMenuItem` uses `UILabel` to display its title, that means we can swizzle `-drawTextInRect:` to support image.
 
-`UIMenuItem+CXAImageSupport` is a dirty hack but should be safe in most cases.
+`UIMenuItem+CXAImageSupport` is a dirty hack but should be safe in most cases. Contains no any private API.
 
-Make a category instead of subclassing `UIMenuItem` gains more flexibility. Yes, I mean you can add image to awsome [PSMenuItem](https://github.com/steipete/PSMenuItem) too!
+Make a category instead of subclassing `UIMenuItem` gains more flexibility. Yes, this category can be applied to the awesome [PSMenuItem](https://github.com/steipete/PSMenuItem) too!
 
 ## How to use
 
@@ -21,7 +21,7 @@ The method names describe all. Default draws shadow as the text title. If you wa
 	
 ## Limitation
 
-`UIMenuItem+CXAImageSupport` uses `UIMenuItem`'s title to map related image since there is no any other clue of `UIMenuItem` I can find to connect to `UILabel`.
+`UIMenuItem+CXAImageSupport` uses `UIMenuItem`'s title to map related image since there is no any other clue of `UIMenuItem` I can find to connect to `UILabel`. You can't set different images for the same title.
 
 ## Creator
 
