@@ -6,7 +6,7 @@
 
 `UIMenuItem+CXAImageSupport` is a dirty hack but should be safe in most cases. Contains no any private API.
 
-Make a category instead of subclassing `UIMenuItem` gains more flexibility. Yes, this category can be applied to the awesome [PSMenuItem](https://github.com/steipete/PSMenuItem) too!
+Make a category instead of subclassing for `UIMenuItem` gains more flexibility. Yes, this category can be applied to the awesome [PSMenuItem](https://github.com/steipete/PSMenuItem) too!
 
 ## How to use
 
