@@ -4,21 +4,37 @@
 
 `UIMenuItem` uses `UILabel` to display its title, that means we can swizzle `-drawTextInRect:` to support image.
 
-`UIMenuItem+CXAImageSupport` is a dirty hack but should be safe in most cases. Contains no any private API.
-
-Make a category instead of subclassing for `UIMenuItem` gains more flexibility. Yes, this category can be applied to the awesome [PSMenuItem](https://github.com/steipete/PSMenuItem) too!
+`UIMenuItem+CXAImageSupport` is a dirty hack but should be safe in most cases. Contains no any private APIs and should be safe for App Store.
 
 ## How to use
 
-Add `UIMenuItem+CXAImageSupport.{h,m}` to your project.
+Drag `UIMenuItem+CXAImageSupport.{h,m}` to your project.
 
-The method names describe all. Default draws shadow as the text title. If you want to hide shadow, set `hidesShadow` to `YES`. 
+The method names describe all. For simple usage, the only step is to set a image to the menu item. For advance usage, config and set a `settings`.
 
-	- (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-	- (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image hidesShadow:(BOOL)hidesShadow;
-	- (void)cxa_setImage:(UIImage *)image forTitle:(NSString *)title;
-	- (void)cxa_setImage:(UIImage *)image hidesShadow:(BOOL)hidesShadow forTitle:(NSString *)title;
-	
+    @class CXAImageMenuSettings;
+    
+    @interface UIMenuItem (CXAImageSupport)
+    
+    - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
+    - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAImageMenuSettings *)settings;
+    - (void)cxa_setImage:(UIImage *)image;
+    - (void)cxa_setSettings:(CXAImageMenuSettings *)settings;
+    
+    @end
+    
+    // Uses a settings class instead of NSDictionary to avoid misspelled keys
+    @interface CXAImageMenuSettings : NSObject
+    
+    + (instancetype)settingsWithDictionary:(NSDictionary *)dict;
+    
+    @property (nonatomic) UIImage *image;
+    @property (nonatomic) BOOL shadowDisabled;
+    @property (nonatomic) CGFloat shrinkWidth;  // For adjustment item width only, will not be preciouse because menu item will keep its minimun width, it's useful for showing some large amount of menu items without expanding.
+
+    
+    @end
+    
 ## Limitation
 
 `UIMenuItem+CXAImageSupport` uses `UIMenuItem`'s title to map related image since there is no any other clue of `UIMenuItem` I can find to connect to `UILabel`. You can't set different images for the same title.
@@ -31,4 +47,4 @@ The method names describe all. Default draws shadow as the text title. If you wa
 
 ## License
 
-Under the MIT license. See the LICENSE file for more information.
+`UIMenuItem+CXAImageSupport` is released under the MIT license. In short, it's royalty-free but you must you keep the copyright notice in your code or software distribution.

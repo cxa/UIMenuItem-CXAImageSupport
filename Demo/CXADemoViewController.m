@@ -51,11 +51,20 @@
   _label.numberOfLines = 0;
   _label.text = NSLocalizedString(@"Under MIT License.\n(c) 2013 CHEN Xian'an\n<xianan.chen@gmail.com>", nil);
   [self.view addSubview:_label];
-  UIMenuItem *cameraItem = [[UIMenuItem alloc] initWithTitle:nil action:@selector(cameraAction:)];
-  [cameraItem cxa_setImage:[UIImage imageNamed:@"camera"] hidesShadow:NO forTitle:NSLocalizedString(@"Camera", nil)];
-  UIMenuItem *broomItem = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Broom", nil) action:@selector(broomAction:) image:[UIImage imageNamed:@"broom"]];
+  UIMenuItem *cameraItem = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Camera", nil) action:@selector(cameraAction:) image:[UIImage imageNamed:@"camera"]];
+  
+  UIMenuItem *broomItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Broom", nil) action:@selector(broomAction:)];
+  CXAImageMenuSettings *settings = [CXAImageMenuSettings new];
+  settings.image = [UIImage imageNamed:@"broom"];
+  settings.shadowDisabled = YES;
+  settings.shrinkWidth = 16;
+  [broomItem cxa_setSettings:settings];
+  
+  UIMenuItem *broomItem2 = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Broom2", nil) action:@selector(broomAction:)];
+  [broomItem2 cxa_setSettings:settings];
+  
   UIMenuItem *textItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"No Image", nil) action:@selector(textAction:)];
-  [UIMenuController sharedMenuController].menuItems = @[cameraItem, broomItem, textItem];
+  [UIMenuController sharedMenuController].menuItems = @[cameraItem, broomItem, broomItem2, textItem];
 }
 
 - (void)viewWillLayoutSubviews

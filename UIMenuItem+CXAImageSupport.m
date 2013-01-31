@@ -2,8 +2,8 @@
 //  UIMenuItem+CXAImageSupport.m
 //  UIMenuItem+CXAImageSupport
 //
-//  Created by CHEN Xian'an on 1/3/13.
-//  Copyright (c) 2013 lazyapps. All rights reserved.
+//  Copyright (c) 2013 CHEN Xian'an <xianan.chen@gmail.com>. All rights reserved.
+//  UIMenuItem+CXAImageSupport is released under the MIT license. In short, it's royalty-free but you must you keep the copyright notice in your code or software distribution.
 //
 
 #import "UIMenuItem+CXAImageSupport.h"
@@ -11,8 +11,7 @@
 
 #define INVISIBLE_IDENTIFIER @"\uFEFF\u200B"
 
-static NSMutableDictionary *titleImagePairs;
-static NSMutableDictionary *titleHidesShadowPairs;
+static NSMutableDictionary *titleSettingsPairs;
 
 @interface NSString (CXAImageSupport)
 
@@ -28,53 +27,48 @@ static NSMutableDictionary *titleHidesShadowPairs;
 {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-    titleImagePairs = [@{} mutableCopy];
-    titleHidesShadowPairs = [@{} mutableCopy];
+    titleSettingsPairs = [@{} mutableCopy];
   });
 }
 
 + (void)dealloc
 {
-  titleImagePairs = nil;
-  titleHidesShadowPairs = nil;
+  titleSettingsPairs = nil;
 }
 
 - (id)cxa_initWithTitle:(NSString *)title
                  action:(SEL)action
                   image:(UIImage *)image
 {
-  return [self cxa_initWithTitle:title action:action image:image hidesShadow:NO];
+  return [self cxa_initWithTitle:title action:action settings:[CXAImageMenuSettings settingsWithDictionary:@{@"image" : image}]];
 }
 
 - (id)cxa_initWithTitle:(NSString *)title
                  action:(SEL)action
-                  image:(UIImage *)image
-            hidesShadow:(BOOL)hidesShadow
+               settings:(CXAImageMenuSettings *)settings
 {
-  id item = [self initWithTitle:nil action:action];
-  if (item)
-    [item cxa_setImage:image hidesShadow:hidesShadow forTitle:title];
+  id item = [self initWithTitle:title action:action];
+  if (!item)
+    return nil;
   
+  [item cxa_setSettings:settings];
   return item;
 }
 
 - (void)cxa_setImage:(UIImage *)image
-            forTitle:(NSString *)title
 {
-  [self cxa_setImage:image hidesShadow:NO forTitle:title];
+  [self cxa_setSettings:[CXAImageMenuSettings settingsWithDictionary:@{@"image" : image}]];
 }
 
-- (void)cxa_setImage:(UIImage *)image
-         hidesShadow:(BOOL)hidesShadow
-            forTitle:(NSString *)title
+- (void)cxa_setSettings:(CXAImageMenuSettings *)settings
 {
-  if (!title)
-    @throw [NSException exceptionWithName:@"UIMenuItem+CXAImageSupport" reason:@"title can't be nil" userInfo:nil];
+  if (!self.title)
+    @throw [NSException exceptionWithName:@"UIMenuItem+CXAImageSupport" reason:@"title can't be nil. Assign your item a title before assigning settings." userInfo:nil];
   
-  title = [title cxa_stringByWrappingInvisibleIdentifiers];
-  self.title = title;
-  titleImagePairs[title] = image;
-  titleHidesShadowPairs[title] = hidesShadow ? @YES : @NO;
+  if (![self.title cxa_doesWrapInvisibleIdentifiers])
+    self.title = [self.title cxa_stringByWrappingInvisibleIdentifiers];
+  
+  titleSettingsPairs[self.title] = settings;
 }
 
 @end
@@ -132,21 +126,33 @@ static CGSize newSizeWithFont(id, SEL, id);
 
 @end
 
+@implementation CXAImageMenuSettings
+
++ (instancetype)settingsWithDictionary:(NSDictionary *)dict
+{
+  CXAImageMenuSettings *settings = [CXAImageMenuSettings new];
+  [settings setValuesForKeysWithDictionary:dict];
+  
+  return settings;
+}
+
+@end
+
 static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
 {
   if (![self.text cxa_doesWrapInvisibleIdentifiers] ||
-      !titleImagePairs[self.text]){
+      !titleSettingsPairs[self.text]){
     origDrawTextInRect(self, @selector(drawTextInRect:), rect);
     return;
   }
 
-  UIImage *img = titleImagePairs[self.text];
+  UIImage *img = [titleSettingsPairs[self.text] image];
   CGSize size = img.size;
   CGPoint point = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
   point.x = ceilf(point.x - size.width/2);
   point.y = ceilf(point.y - size.height/2);
   
-  BOOL drawsShadow = ![titleHidesShadowPairs[self.text] boolValue];
+  BOOL drawsShadow = ![titleSettingsPairs[self.text] shadowDisabled];
   CGContextRef context;
   if (drawsShadow){
     context = UIGraphicsGetCurrentContext();
@@ -162,7 +168,7 @@ static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
 static void newSetFrame(UILabel *self, SEL _cmd, CGRect rect)
 {
   if ([self.text cxa_doesWrapInvisibleIdentifiers] &&
-      titleImagePairs[self.text])
+      titleSettingsPairs[self.text])
     rect = self.superview.bounds;
   
   origSetFrame(self, @selector(setFrame:), rect);
@@ -171,8 +177,11 @@ static void newSetFrame(UILabel *self, SEL _cmd, CGRect rect)
 static CGSize newSizeWithFont(NSString *self, SEL _cmd, UIFont *font)
 {
   if ([self cxa_doesWrapInvisibleIdentifiers] &&
-      titleImagePairs[self])
-    return [titleImagePairs[self] size];
+      titleSettingsPairs[self]){
+    CGSize size = [[titleSettingsPairs[self] image] size];
+    size.width -= [titleSettingsPairs[self] shrinkWidth];
+    return size;
+  }
   
   return origSizeWithFont(self, _cmd, font);
 }
