@@ -54,7 +54,7 @@
   UIMenuItem *cameraItem = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Camera", nil) action:@selector(cameraAction:) image:[UIImage imageNamed:@"camera"]];
   
   UIMenuItem *broomItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Broom", nil) action:@selector(broomAction:)];
-  CXAImageMenuSettings *settings = [CXAImageMenuSettings new];
+  CXAMenuItemSettings *settings = [CXAMenuItemSettings new];
   settings.image = [UIImage imageNamed:@"broom"];
   settings.shadowDisabled = YES;
   settings.shrinkWidth = 16;

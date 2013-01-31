@@ -40,12 +40,12 @@ static NSMutableDictionary *titleSettingsPairs;
                  action:(SEL)action
                   image:(UIImage *)image
 {
-  return [self cxa_initWithTitle:title action:action settings:[CXAImageMenuSettings settingsWithDictionary:@{@"image" : image}]];
+  return [self cxa_initWithTitle:title action:action settings:[CXAMenuItemSettings settingsWithDictionary:@{@"image" : image}]];
 }
 
 - (id)cxa_initWithTitle:(NSString *)title
                  action:(SEL)action
-               settings:(CXAImageMenuSettings *)settings
+               settings:(CXAMenuItemSettings *)settings
 {
   id item = [self initWithTitle:title action:action];
   if (!item)
@@ -57,10 +57,10 @@ static NSMutableDictionary *titleSettingsPairs;
 
 - (void)cxa_setImage:(UIImage *)image
 {
-  [self cxa_setSettings:[CXAImageMenuSettings settingsWithDictionary:@{@"image" : image}]];
+  [self cxa_setSettings:[CXAMenuItemSettings settingsWithDictionary:@{@"image" : image}]];
 }
 
-- (void)cxa_setSettings:(CXAImageMenuSettings *)settings
+- (void)cxa_setSettings:(CXAMenuItemSettings *)settings
 {
   if (!self.title)
     @throw [NSException exceptionWithName:@"UIMenuItem+CXAImageSupport" reason:@"title can't be nil. Assign your item a title before assigning settings." userInfo:nil];
@@ -126,11 +126,11 @@ static CGSize newSizeWithFont(id, SEL, id);
 
 @end
 
-@implementation CXAImageMenuSettings
+@implementation CXAMenuItemSettings
 
 + (instancetype)settingsWithDictionary:(NSDictionary *)dict
 {
-  CXAImageMenuSettings *settings = [CXAImageMenuSettings new];
+  CXAMenuItemSettings *settings = [CXAMenuItemSettings new];
   [settings setValuesForKeysWithDictionary:dict];
   
   return settings;

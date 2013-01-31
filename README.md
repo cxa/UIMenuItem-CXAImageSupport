@@ -12,26 +12,28 @@ Drag `UIMenuItem+CXAImageSupport.{h,m}` to your project.
 
 The method names describe all. For simple usage, the only step is to set a image to the menu item. For advance usage, config and set a `settings`.
 
-    @class CXAImageMenuSettings;
+    @class CXAMenuItemSettings;
     
     @interface UIMenuItem (CXAImageSupport)
     
     - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-    - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAImageMenuSettings *)settings;
+    - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
     - (void)cxa_setImage:(UIImage *)image;
-    - (void)cxa_setSettings:(CXAImageMenuSettings *)settings;
+    - (void)cxa_setSettings:(CXAMenuItemSettings *)settings;
     
     @end
     
-    // Uses a settings class instead of NSDictionary to avoid misspelled keys
-    @interface CXAImageMenuSettings : NSObject
+    // Uses a settings class instead of NSDictionary to avoid
+       misspelled keys
+    @interface CXAMenuItemSettings : NSObject
     
     + (instancetype)settingsWithDictionary:(NSDictionary *)dict;
     
     @property (nonatomic) UIImage *image;
     @property (nonatomic) BOOL shadowDisabled;
-    @property (nonatomic) CGFloat shrinkWidth;  // For adjustment item width only, will not be preciouse because menu item will keep its minimun width, it's useful for showing some large amount of menu items without expanding.
-
+    @property (nonatomic) CGFloat shrinkWidth; // For adjustment item width only,
+     will not be preciouse because menu item will keep its minimun width,
+      it's useful for showing some large amount of menu items without expanding.
     
     @end
     

@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@class CXAImageMenuSettings;
+@class CXAMenuItemSettings;
 
 @interface UIMenuItem (CXAImageSupport)
 
 - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-- (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAImageMenuSettings *)settings;
+- (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
 - (void)cxa_setImage:(UIImage *)image;
-- (void)cxa_setSettings:(CXAImageMenuSettings *)settings;
+- (void)cxa_setSettings:(CXAMenuItemSettings *)settings;
 
 @end
 
 // Uses a settings class instead of NSDictionary to avoid misspelled keys
-@interface CXAImageMenuSettings : NSObject
+@interface CXAMenuItemSettings : NSObject
 
 + (instancetype)settingsWithDictionary:(NSDictionary *)dict;
 
