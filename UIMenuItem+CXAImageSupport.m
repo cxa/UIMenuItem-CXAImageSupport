@@ -108,20 +108,23 @@ static CGSize newSizeWithFont(id, SEL, id);
 
 + (void)load
 {
-  Method origMethod = class_getInstanceMethod(self, @selector(drawTextInRect:));
-  origDrawTextInRect = (void *)method_getImplementation(origMethod);
-  if (!class_addMethod(self, @selector(drawTextInRect:), (IMP)newDrawTextInRect, method_getTypeEncoding(origMethod)))
-    method_setImplementation(origMethod, (IMP)newDrawTextInRect);
-  
-  origMethod = class_getInstanceMethod(self, @selector(setFrame:));
-  origSetFrame = (void *)method_getImplementation(origMethod);
-  if (!class_addMethod(self, @selector(setFrame:), (IMP)newSetFrame, method_getTypeEncoding(origMethod)))
-    method_setImplementation(origMethod, (IMP)newSetFrame);
-  
-  origMethod = class_getInstanceMethod([NSString class], @selector(sizeWithFont:));
-  origSizeWithFont = (void *)method_getImplementation(origMethod);
-  if (!class_addMethod([NSString class], @selector(sizeWithFont:), (IMP)newSizeWithFont, method_getTypeEncoding(origMethod)))
-    method_setImplementation(origMethod, (IMP)newSizeWithFont);
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    Method origMethod = class_getInstanceMethod(self, @selector(drawTextInRect:));
+    origDrawTextInRect = (void *)method_getImplementation(origMethod);
+    if (!class_addMethod(self, @selector(drawTextInRect:), (IMP)newDrawTextInRect, method_getTypeEncoding(origMethod)))
+      method_setImplementation(origMethod, (IMP)newDrawTextInRect);
+    
+    origMethod = class_getInstanceMethod(self, @selector(setFrame:));
+    origSetFrame = (void *)method_getImplementation(origMethod);
+    if (!class_addMethod(self, @selector(setFrame:), (IMP)newSetFrame, method_getTypeEncoding(origMethod)))
+      method_setImplementation(origMethod, (IMP)newSetFrame);
+    
+    origMethod = class_getInstanceMethod([NSString class], @selector(sizeWithFont:));
+    origSizeWithFont = (void *)method_getImplementation(origMethod);
+    if (!class_addMethod([NSString class], @selector(sizeWithFont:), (IMP)newSizeWithFont, method_getTypeEncoding(origMethod)))
+      method_setImplementation(origMethod, (IMP)newSizeWithFont);
+  });
 }
 
 @end
