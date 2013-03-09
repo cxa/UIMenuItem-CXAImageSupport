@@ -24,7 +24,7 @@
 
 + (instancetype)settingsWithDictionary:(NSDictionary *)dict;
 
-@property (nonatomic) UIImage *image;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic) BOOL shadowDisabled;
 @property (nonatomic) CGFloat shrinkWidth; // For adjustment item width only, will not be preciouse because menu item will keep its minimun width, it's useful for showing some large amount of menu items without expanding.
 
