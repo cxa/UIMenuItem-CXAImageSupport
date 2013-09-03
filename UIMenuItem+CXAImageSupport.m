@@ -27,7 +27,7 @@ static NSMutableDictionary *titleSettingsPairs;
 {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-    titleSettingsPairs = [@{} mutableCopy];
+    titleSettingsPairs = [NSMutableDictionary dictionary];
   });
 }
 
@@ -101,6 +101,8 @@ static void (*origSetFrame)(id, SEL, CGRect);
 static void newSetFrame(id, SEL, CGRect);
 static CGSize (*origSizeWithFont)(id, SEL, id);
 static CGSize newSizeWithFont(id, SEL, id);
+static CGSize (*origSizeWithAttributes)(id, SEL, id);
+static CGSize newSizeWithAttributes(id, SEL, id);
 
 @interface UILabel (CXAImageSupport) @end
 
@@ -124,6 +126,12 @@ static CGSize newSizeWithFont(id, SEL, id);
     origSizeWithFont = (void *)method_getImplementation(origMethod);
     if (!class_addMethod([NSString class], @selector(sizeWithFont:), (IMP)newSizeWithFont, method_getTypeEncoding(origMethod)))
       method_setImplementation(origMethod, (IMP)newSizeWithFont);
+    
+    origMethod = class_getInstanceMethod([NSString class], @selector(sizeWithAttributes:));
+    origSizeWithAttributes = (void *)method_getImplementation(origMethod);
+    if (!class_addMethod([NSString class], @selector(sizeWithAttributes:), (IMP)newSizeWithAttributes, method_getTypeEncoding(origMethod)))
+      method_setImplementation(origMethod, (IMP)newSizeWithAttributes);
+
   });
 }
 
@@ -187,4 +195,16 @@ static CGSize newSizeWithFont(NSString *self, SEL _cmd, UIFont *font)
   }
   
   return origSizeWithFont(self, _cmd, font);
+}
+
+static CGSize newSizeWithAttributes(NSString *self, SEL _cmd, NSDictionary *attributes)
+{
+  if ([self cxa_doesWrapInvisibleIdentifiers] &&
+      titleSettingsPairs[self]){
+    CGSize size = [[titleSettingsPairs[self] image] size];
+    size.width -= [titleSettingsPairs[self] shrinkWidth];
+    return size;
+  }
+  
+  return origSizeWithAttributes(self, _cmd, attributes);
 }
