@@ -36,16 +36,16 @@ static NSMutableDictionary *titleSettingsPairs;
   titleSettingsPairs = nil;
 }
 
-- (id)cxa_initWithTitle:(NSString *)title
-                 action:(SEL)action
-                  image:(UIImage *)image
+- (instancetype)cxa_initWithTitle:(NSString *)title
+                           action:(SEL)action
+                            image:(UIImage *)image
 {
   return [self cxa_initWithTitle:title action:action settings:[CXAMenuItemSettings settingsWithDictionary:@{@"image" : image}]];
 }
 
-- (id)cxa_initWithTitle:(NSString *)title
-                 action:(SEL)action
-               settings:(CXAMenuItemSettings *)settings
+- (instancetype)cxa_initWithTitle:(NSString *)title
+                           action:(SEL)action
+                         settings:(CXAMenuItemSettings *)settings
 {
   id item = [self initWithTitle:title action:action];
   if (!item)

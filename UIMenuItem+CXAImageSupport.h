@@ -12,8 +12,8 @@
 
 @interface UIMenuItem (CXAImageSupport)
 
-- (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-- (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
+- (instancetype)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
+- (instancetype)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
 - (void)cxa_setImage:(UIImage *)image;
 - (void)cxa_setSettings:(CXAMenuItemSettings *)settings;
 
