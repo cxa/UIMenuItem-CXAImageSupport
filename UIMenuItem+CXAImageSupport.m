@@ -40,12 +40,26 @@ static NSMutableDictionary *titleSettingsPairs;
                            action:(SEL)action
                             image:(UIImage *)image
 {
-  return [self cxa_initWithTitle:title action:action settings:[CXAMenuItemSettings settingsWithDictionary:@{@"image" : image}]];
+  return [self initWithTitle:title action:action image:image];
 }
 
 - (instancetype)cxa_initWithTitle:(NSString *)title
                            action:(SEL)action
                          settings:(CXAMenuItemSettings *)settings
+{
+  return [self initWithTitle:title action:action settings:settings];
+}
+
+- (instancetype)initWithTitle:(NSString *)title
+                       action:(SEL)action
+                        image:(UIImage *)image
+{
+  return [self initWithTitle:title action:action settings:[CXAMenuItemSettings settingsWithDictionary:@{@"image" : image}]];
+}
+
+- (instancetype)initWithTitle:(NSString *)title
+                       action:(SEL)action
+                     settings:(CXAMenuItemSettings *)settings
 {
   id item = [self initWithTitle:title action:action];
   if (!item)
@@ -175,9 +189,8 @@ static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
   point.y = ceilf(point.y - size.height/2);
   
   BOOL drawsShadow = ![titleSettingsPairs[self.text] shadowDisabled];
-  CGContextRef context;
+  CGContextRef context = UIGraphicsGetCurrentContext();
   if (drawsShadow){
-    context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     UIColor *shadowColor = [titleSettingsPairs[self.text] shadowColor] ?: [[UIColor blackColor] colorWithAlphaComponent:1./3.];
     CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0, shadowColor.CGColor);

@@ -7,7 +7,7 @@
 //
 
 #import "CXADemoViewController.h"
-#import "UIMenuItem+CXAImageSupport.h"
+#import <ImageMenuItem/ImageMenuItem.h>
 
 @interface CXADemoViewController(){
   UIButton *_button;
@@ -47,7 +47,7 @@
   _label.numberOfLines = 0;
   _label.text = NSLocalizedString(@"Under MIT License.\n(c) 2013 — Present CHEN Xian’an\n<xianan.chen@gmail.com>", nil);
   [self.view addSubview:_label];
-  UIMenuItem *cameraItem = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Camera", nil) action:@selector(cameraAction:) image:[UIImage imageNamed:@"camera"]];
+  UIMenuItem *cameraItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Camera", nil) action:@selector(cameraAction:) image:[UIImage imageNamed:@"camera"]];
   
   UIMenuItem *broomItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Broom", nil) action:@selector(broomAction:)];
   CXAMenuItemSettings *settings = [CXAMenuItemSettings new];

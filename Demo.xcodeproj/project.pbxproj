@@ -21,11 +21,43 @@
 		E058E18B1694A40D009A0BCE /* broom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1871694A40D009A0BCE /* broom@2x.png */; };
 		E058E18C1694A40D009A0BCE /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1881694A40D009A0BCE /* camera.png */; };
 		E058E18D1694A40D009A0BCE /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E058E1891694A40D009A0BCE /* camera@2x.png */; };
-		E058E1A0169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m */; };
+		E09B62C41AD7A61A00A8CB79 /* ImageMenuItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E09B62C31AD7A61300A8CB79 /* ImageMenuItem.framework */; };
+		E09B62C51AD7A61A00A8CB79 /* ImageMenuItem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E09B62C31AD7A61300A8CB79 /* ImageMenuItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E09B62C21AD7A61300A8CB79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E09B62BE1AD7A61300A8CB79 /* ImageMenuItem.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E09B629E1AD7A57900A8CB79;
+			remoteInfo = ImageMenuItem;
+		};
+		E09B62C61AD7A61A00A8CB79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E09B62BE1AD7A61300A8CB79 /* ImageMenuItem.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E09B629D1AD7A57900A8CB79;
+			remoteInfo = ImageMenuItem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E09B62C81AD7A61A00A8CB79 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E09B62C51AD7A61A00A8CB79 /* ImageMenuItem.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "UIMenuItem-CXAImageSupport"; path = "UIMenuItem+CXAImageSupport Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E058E151169493BD009A0BCE /* UIMenuItem+CXAImageSupport Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIMenuItem+CXAImageSupport Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E058E155169493BD009A0BCE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E058E157169493BD009A0BCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E058E159169493BD009A0BCE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -43,9 +75,8 @@
 		E058E1871694A40D009A0BCE /* broom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "broom@2x.png"; sourceTree = "<group>"; };
 		E058E1881694A40D009A0BCE /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		E058E1891694A40D009A0BCE /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
-		E058E19E169583B2009A0BCE /* UIMenuItem+CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuItem+CXAImageSupport.h"; sourceTree = "<group>"; };
-		E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuItem+CXAImageSupport.m"; sourceTree = "<group>"; };
-		E07759F6169B2FF500151A23 /* Demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Demo.plist"; sourceTree = "<group>"; };
+		E07759F6169B2FF500151A23 /* Demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Demo.plist; sourceTree = "<group>"; };
+		E09B62BE1AD7A61300A8CB79 /* ImageMenuItem.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ImageMenuItem.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +86,7 @@
 			files = (
 				E058E156169493BD009A0BCE /* UIKit.framework in Frameworks */,
 				E058E158169493BD009A0BCE /* Foundation.framework in Frameworks */,
+				E09B62C41AD7A61A00A8CB79 /* ImageMenuItem.framework in Frameworks */,
 				E058E15A169493BD009A0BCE /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +97,7 @@
 		E058E146169493BD009A0BCE = {
 			isa = PBXGroup;
 			children = (
-				E058E172169493DB009A0BCE /* UIMenuItem+CXAImageSupport */,
+				E09B62BE1AD7A61300A8CB79 /* ImageMenuItem.xcodeproj */,
 				E058E15B169493BD009A0BCE /* Demo */,
 				E058E154169493BD009A0BCE /* Frameworks */,
 				E058E152169493BD009A0BCE /* Products */,
@@ -75,7 +107,7 @@
 		E058E152169493BD009A0BCE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport */,
+				E058E151169493BD009A0BCE /* UIMenuItem+CXAImageSupport Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,8 +131,7 @@
 				E058E17416949402009A0BCE /* CXADemoViewController.m */,
 				E058E15C169493BD009A0BCE /* Supporting Files */,
 			);
-			name = Demo;
-			path = "Demo";
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		E058E15C169493BD009A0BCE /* Supporting Files */ = {
@@ -121,13 +152,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E058E172169493DB009A0BCE /* UIMenuItem+CXAImageSupport */ = {
+		E09B62BF1AD7A61300A8CB79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E058E19E169583B2009A0BCE /* UIMenuItem+CXAImageSupport.h */,
-				E058E19F169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m */,
+				E09B62C31AD7A61300A8CB79 /* ImageMenuItem.framework */,
 			);
-			name = "UIMenuItem+CXAImageSupport";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,14 +170,16 @@
 				E058E14D169493BD009A0BCE /* Sources */,
 				E058E14E169493BD009A0BCE /* Frameworks */,
 				E058E14F169493BD009A0BCE /* Resources */,
+				E09B62C81AD7A61A00A8CB79 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E09B62C71AD7A61A00A8CB79 /* PBXTargetDependency */,
 			);
 			name = "UIMenuItem+CXAImageSupport Demo";
 			productName = CXAMenuItem;
-			productReference = E058E151169493BD009A0BCE /* UIMenuItem-CXAImageSupport */;
+			productReference = E058E151169493BD009A0BCE /* UIMenuItem+CXAImageSupport Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,12 +202,28 @@
 			mainGroup = E058E146169493BD009A0BCE;
 			productRefGroup = E058E152169493BD009A0BCE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E09B62BF1AD7A61300A8CB79 /* Products */;
+					ProjectRef = E09B62BE1AD7A61300A8CB79 /* ImageMenuItem.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E058E150169493BD009A0BCE /* UIMenuItem+CXAImageSupport Demo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E09B62C31AD7A61300A8CB79 /* ImageMenuItem.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ImageMenuItem.framework;
+			remoteRef = E09B62C21AD7A61300A8CB79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E058E14F169493BD009A0BCE /* Resources */ = {
@@ -203,11 +251,18 @@
 				E058E162169493BD009A0BCE /* main.m in Sources */,
 				E058E166169493BD009A0BCE /* CXAAppDelegate.m in Sources */,
 				E058E17516949402009A0BCE /* CXADemoViewController.m in Sources */,
-				E058E1A0169583B2009A0BCE /* UIMenuItem+CXAImageSupport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E09B62C71AD7A61A00A8CB79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ImageMenuItem;
+			targetProxy = E09B62C61AD7A61A00A8CB79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E058E15E169493BD009A0BCE /* InfoPlist.strings */ = {
@@ -276,7 +331,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
-				INFOPLIST_FILE = "Demo/Demo.plist";
+				INFOPLIST_FILE = Demo/Demo.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -287,7 +344,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
-				INFOPLIST_FILE = "Demo/Demo.plist";
+				INFOPLIST_FILE = Demo/Demo.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

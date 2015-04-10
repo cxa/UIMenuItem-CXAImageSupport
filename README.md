@@ -1,6 +1,6 @@
 # UIMenuItem with Image Support
 
-![screenshot of UIMenuItem with image](https://raw.github.com/cxa/UIMenuItem-CXAImageSupport/master/screenshot.jpg)
+![screenshot of UIMenuItem with image](screenshot.jpg)
 
 `UIMenuItem` uses `UILabel` to display its title, that means we can swizzle `-drawTextInRect:` to support image.
 
@@ -8,7 +8,7 @@
 
 ## How to use
 
-Drag `UIMenuItem+CXAImageSupport.{h,m}` to your project.
+Drag `UIMenuItem+CXAImageSupport.{h,m}` to your project. Or drag `ImageMenuItem.xcodeproj` to your project and embed `ImageMenuItem` framework if you only support iOS 8.0 and above.
 
 The method names describe all. For simple usage, the only step is to set a image to the menu item. For advance usage, config and set a `settings`.
 

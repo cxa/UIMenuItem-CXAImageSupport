@@ -22,8 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIMenuItem (CXAImageSupport)
 
-- (instancetype)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-- (instancetype)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
+- (instancetype)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image DEPRECATED_MSG_ATTRIBUTE("use `-initWithTitle:action:image:` instead.");
+- (instancetype)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings DEPRECATED_MSG_ATTRIBUTE("use `-initWithTitle:settings:` instead.");
+- (instancetype)initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
+- (instancetype)initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
 - (void)cxa_setImage:(UIImage *)image;
 - (void)cxa_setSettings:(CXAMenuItemSettings *)settings;
 
