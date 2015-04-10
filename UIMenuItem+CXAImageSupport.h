@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) BOOL shadowDisabled;
-@property (nonatomic, strong) UIColor * __nullable shadowColor; // Default is Black
+@property (nonatomic, strong) UIColor * __nullable shadowColor; // Default is [[UIColor blackColor] colorWithAlphaComponent:1./3.]
 @property (nonatomic) CGFloat shrinkWidth; // For adjustment item width only, will not be preciouse because menu item will keep its minimun width, it's useful for showing some large amount of menu items without expanding.
 
 @end
