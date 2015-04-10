@@ -36,7 +36,7 @@
 {
   [super loadView];
   
-  self.view.backgroundColor = [UIColor darkGrayColor];
+  self.view.backgroundColor = [UIColor whiteColor];
   _button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [_button setTitle:NSLocalizedString(@"Press Me", nil) forState:UIControlStateNormal];
   [_button addTarget:self action:@selector(pressme:) forControlEvents:UIControlEventTouchUpInside];
@@ -44,12 +44,8 @@
   _label = [[UILabel alloc] initWithFrame:CGRectZero];
   _label.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.];
   _label.textAlignment = NSTextAlignmentCenter;
-  _label.textColor = [UIColor whiteColor];
-  _label.backgroundColor = [UIColor clearColor];
-  _label.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:.75];
-  _label.shadowOffset = CGSizeMake(0, -1);
   _label.numberOfLines = 0;
-  _label.text = NSLocalizedString(@"Under MIT License.\n(c) 2013 CHEN Xian'an\n<xianan.chen@gmail.com>", nil);
+  _label.text = NSLocalizedString(@"Under MIT License.\n(c) 2013 — Present CHEN Xian’an\n<xianan.chen@gmail.com>", nil);
   [self.view addSubview:_label];
   UIMenuItem *cameraItem = [[UIMenuItem alloc] cxa_initWithTitle:NSLocalizedString(@"Camera", nil) action:@selector(cameraAction:) image:[UIImage imageNamed:@"camera"]];
   
@@ -61,6 +57,8 @@
   [broomItem cxa_setSettings:settings];
   
   UIMenuItem *broomItem2 = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Broom2", nil) action:@selector(broomAction:)];
+  settings.shadowDisabled = NO;
+  settings.shadowColor = [UIColor redColor];
   [broomItem2 cxa_setSettings:settings];
   
   UIMenuItem *textItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"No Image", nil) action:@selector(textAction:)];

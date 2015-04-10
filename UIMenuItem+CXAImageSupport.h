@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#if !__has_feature(nullability)
+
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define __nullable
+
+#endif
+
 @class CXAMenuItemSettings;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface UIMenuItem (CXAImageSupport)
 
@@ -20,12 +30,16 @@
 @end
 
 // Uses a settings class instead of NSDictionary to avoid misspelled keys
-@interface CXAMenuItemSettings : NSObject
+@interface CXAMenuItemSettings : NSObject <NSCopying>
 
 + (instancetype)settingsWithDictionary:(NSDictionary *)dict;
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) BOOL shadowDisabled;
+@property (nonatomic, strong) UIColor * __nullable shadowColor; // Default is Black
 @property (nonatomic) CGFloat shrinkWidth; // For adjustment item width only, will not be preciouse because menu item will keep its minimun width, it's useful for showing some large amount of menu items without expanding.
 
 @end
+
+NS_ASSUME_NONNULL_END
+

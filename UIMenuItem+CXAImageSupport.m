@@ -68,7 +68,7 @@ static NSMutableDictionary *titleSettingsPairs;
   if (![self.title cxa_doesWrapInvisibleIdentifiers])
     self.title = [self.title cxa_stringByWrappingInvisibleIdentifiers];
   
-  titleSettingsPairs[self.title] = settings;
+  titleSettingsPairs[self.title] = [settings copy];
 }
 
 @end
@@ -147,6 +147,17 @@ static CGSize newSizeWithAttributes(id, SEL, id);
   return settings;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+  CXAMenuItemSettings *settings = [CXAMenuItemSettings new];
+  settings.image = self.image;
+  settings.shadowDisabled = self.shadowDisabled;
+  settings.shadowColor = self.shadowColor;
+  settings.shrinkWidth = self.shrinkWidth;
+  
+  return settings;
+}
+
 @end
 
 static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
@@ -168,7 +179,8 @@ static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
   if (drawsShadow){
     context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
-    CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0, [[UIColor blackColor] colorWithAlphaComponent:1./3.].CGColor);
+    UIColor *shadowColor = [titleSettingsPairs[self.text] shadowColor] ?: [[UIColor blackColor] colorWithAlphaComponent:1./3.];
+    CGContextSetShadowWithColor(context, CGSizeMake(0, -1), 0, shadowColor.CGColor);
   }
   
   [img drawAtPoint:point];
