@@ -16,8 +16,8 @@ The method names describe all. For simple usage, the only step is to set a image
     
     @interface UIMenuItem (CXAImageSupport)
     
-    - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-    - (id)cxa_initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
+    - (id)initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
+    - (id)initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
     - (void)cxa_setImage:(UIImage *)image;
     - (void)cxa_setSettings:(CXAMenuItemSettings *)settings;
     
