@@ -11,7 +11,7 @@
 
 #define INVISIBLE_IDENTIFIER @"\uFEFF\u200B"
 
-static NSMutableDictionary *titleSettingsPairs;
+static NSMutableDictionary<NSString *, CXAMenuItemSettings *> *titleSettingsPairs;
 
 @interface NSString (CXAImageSupport)
 
@@ -153,7 +153,7 @@ static CGSize newSizeWithAttributes(id, SEL, id);
 
 @implementation CXAMenuItemSettings
 
-+ (instancetype)settingsWithDictionary:(NSDictionary *)dict
++ (instancetype)settingsWithDictionary:(NSDictionary<NSString *, id> *)dict
 {
   CXAMenuItemSettings *settings = [CXAMenuItemSettings new];
   [settings setValuesForKeysWithDictionary:dict];
@@ -182,7 +182,7 @@ static void newDrawTextInRect(UILabel *self, SEL _cmd, CGRect rect)
     return;
   }
 
-  UIImage *img = (UIImage *)[titleSettingsPairs[self.text] image];
+  UIImage *img = [titleSettingsPairs[self.text] image];
   CGSize size = img.size;
   CGPoint point = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
   point.x = ceilf(point.x - size.width/2);
@@ -214,7 +214,7 @@ static CGSize newSizeWithFont(NSString *self, SEL _cmd, UIFont *font)
 {
   if ([self cxa_doesWrapInvisibleIdentifiers] &&
       titleSettingsPairs[self]){
-    CGSize size = [(UIImage *)[titleSettingsPairs[self] image] size];
+    CGSize size = [[titleSettingsPairs[self] image] size];
     size.width -= [titleSettingsPairs[self] shrinkWidth];
     return size;
   }
@@ -226,7 +226,7 @@ static CGSize newSizeWithAttributes(NSString *self, SEL _cmd, NSDictionary *attr
 {
   if ([self cxa_doesWrapInvisibleIdentifiers] &&
       titleSettingsPairs[self]){
-    CGSize size = [(UIImage *)[titleSettingsPairs[self] image] size];
+    CGSize size = [[titleSettingsPairs[self] image] size];
     size.width -= [titleSettingsPairs[self] shrinkWidth];
     return size;
   }

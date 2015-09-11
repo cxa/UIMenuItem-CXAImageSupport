@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 // Uses a settings class instead of NSDictionary to avoid misspelled keys
 @interface CXAMenuItemSettings : NSObject <NSCopying>
 
-+ (instancetype)settingsWithDictionary:(NSDictionary *)dict;
++ (instancetype)settingsWithDictionary:(NSDictionary<NSString *, id> *)dict;
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) BOOL shadowDisabled;

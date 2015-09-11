@@ -8,6 +8,8 @@
 
 ## How to use
 
+*Xcode 7 required due to Objective-C generics.*
+
 Drag `UIMenuItem+CXAImageSupport.{h,m}` to your project. Or drag `ImageMenuItem.xcodeproj` to your project and embed `ImageMenuItem` framework if you only support iOS 8.0 and above.
 
 The method names describe all. For simple usage, the only step is to set a image to the menu item. For advance usage, config and set a `settings`.
@@ -16,8 +18,8 @@ The method names describe all. For simple usage, the only step is to set a image
     
     @interface UIMenuItem (CXAImageSupport)
     
-    - (id)initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
-    - (id)initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
+    - (instancetype)initWithTitle:(NSString *)title action:(SEL)action image:(UIImage *)image;
+    - (instancetype)initWithTitle:(NSString *)title action:(SEL)action settings:(CXAMenuItemSettings *)settings;
     - (void)cxa_setImage:(UIImage *)image;
     - (void)cxa_setSettings:(CXAMenuItemSettings *)settings;
     
@@ -25,16 +27,14 @@ The method names describe all. For simple usage, the only step is to set a image
     
     // Uses a settings class instead of NSDictionary to avoid
        misspelled keys
-    @interface CXAMenuItemSettings : NSObject
+    @interface CXAMenuItemSettings : NSObject <NSCopying>
+
+    + (instancetype)settingsWithDictionary:(NSDictionary<NSString *, id> *)dict;
     
-    + (instancetype)settingsWithDictionary:(NSDictionary *)dict;
-    
-    @property (nonatomic) UIImage *image;
+    @property (nonatomic, strong) UIImage *image;
     @property (nonatomic) BOOL shadowDisabled;
     @property (nonatomic, strong) UIColor * __nullable shadowColor; // Default is [[UIColor blackColor] colorWithAlphaComponent:1./3.]
-    @property (nonatomic) CGFloat shrinkWidth; // For adjustment item width only,
-     will not be preciouse because menu item will keep its minimun width,
-      it's useful for showing some large amount of menu items without expanding.
+    @property (nonatomic) CGFloat shrinkWidth; // For adjustment item width only, will not be preciouse because menu item will keep its minimun width, it's useful for showing some large amount of menu items without expanding.
     
     @end
     
