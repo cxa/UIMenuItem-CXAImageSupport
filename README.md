@@ -1,5 +1,7 @@
 # UIMenuItem with Image Support
 
+*Officially Deprecated! use [MenuItemKit](https://github.com/cxa/MenuItemKit) instead.*
+
 ![screenshot of UIMenuItem with image](screenshot.jpg)
 
 `UIMenuItem` uses `UILabel` to display its title, that means we can swizzle `-drawTextInRect:` to support image.
@@ -50,4 +52,4 @@ The method names describe all. For simple usage, the only step is to set a image
 
 ## License
 
-`UIMenuItem+CXAImageSupport` is released under the MIT license. In short, it's royalty-free but you must you keep the copyright notice in your code or software distribution.
+`UIMenuItem+CXAImageSupport` is released under the MIT license. In short, it's royalty-free but you must keep the copyright notice in your code or software distribution.
