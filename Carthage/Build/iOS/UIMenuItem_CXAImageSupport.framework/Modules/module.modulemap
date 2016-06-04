@@ -1,0 +1,6 @@
+framework module UIMenuItem_CXAImageSupport {
+  umbrella header "UIMenuItem_CXAImageSupport.h"
+
+  export *
+  module * { export * }
+}

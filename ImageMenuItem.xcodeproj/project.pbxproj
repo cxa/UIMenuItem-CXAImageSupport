@@ -10,7 +10,7 @@
 		B0D69B601D036944003B4CCD /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E09B62BB1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m */; };
 		B0D69B631D036944003B4CCD /* ImageMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62A31AD7A57900A8CB79 /* ImageMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0D69B6B1D036BB9003B4CCD /* UIMenuItem+CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62BA1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B0D69B6D1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D69B6C1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h */; };
+		B0D69B6D1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D69B6C1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E09B62A41AD7A57900A8CB79 /* ImageMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62A31AD7A57900A8CB79 /* ImageMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E09B62BC1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62BA1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E09B62BD1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E09B62BB1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m */; };
