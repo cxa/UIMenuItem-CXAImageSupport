@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0D69B601D036944003B4CCD /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E09B62BB1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m */; };
+		B0D69B631D036944003B4CCD /* ImageMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62A31AD7A57900A8CB79 /* ImageMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0D69B6B1D036BB9003B4CCD /* UIMenuItem+CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62BA1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0D69B6D1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D69B6C1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E09B62A41AD7A57900A8CB79 /* ImageMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62A31AD7A57900A8CB79 /* ImageMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E09B62BC1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = E09B62BA1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E09B62BD1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E09B62BB1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B0D69B691D036944003B4CCD /* UIMenuItem_CXAImageSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIMenuItem_CXAImageSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0D69B6A1D036944003B4CCD /* UIMenuItem+CXAImageSupport.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UIMenuItem+CXAImageSupport.plist"; path = "/Users/alexpopov/Documents/Projects/Xcode/2016/UIMenuItem-CXAImageSupport/UIMenuItem+CXAImageSupport.plist"; sourceTree = "<absolute>"; };
+		B0D69B6C1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMenuItem_CXAImageSupport.h; sourceTree = "<group>"; };
 		E09B629E1AD7A57900A8CB79 /* ImageMenuItem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageMenuItem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E09B62A21AD7A57900A8CB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E09B62A31AD7A57900A8CB79 /* ImageMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageMenuItem.h; sourceTree = "<group>"; };
@@ -21,6 +28,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B0D69B611D036944003B4CCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E09B629A1AD7A57900A8CB79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				E09B629E1AD7A57900A8CB79 /* ImageMenuItem.framework */,
+				B0D69B691D036944003B4CCD /* UIMenuItem_CXAImageSupport.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				E09B62A31AD7A57900A8CB79 /* ImageMenuItem.h */,
+				B0D69B6C1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h */,
 				E09B62BA1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.h */,
 				E09B62BB1AD7A5ED00A8CB79 /* UIMenuItem+CXAImageSupport.m */,
 				E09B62A11AD7A57900A8CB79 /* Supporting Files */,
@@ -62,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E09B62A21AD7A57900A8CB79 /* Info.plist */,
+				B0D69B6A1D036944003B4CCD /* UIMenuItem+CXAImageSupport.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -69,6 +86,16 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B0D69B621D036944003B4CCD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0D69B631D036944003B4CCD /* ImageMenuItem.h in Headers */,
+				B0D69B6D1D036C61003B4CCD /* UIMenuItem_CXAImageSupport.h in Headers */,
+				B0D69B6B1D036BB9003B4CCD /* UIMenuItem+CXAImageSupport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E09B629B1AD7A57900A8CB79 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,6 +108,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B0D69B5E1D036944003B4CCD /* UIMenuItem_CXAImageSupport */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0D69B661D036944003B4CCD /* Build configuration list for PBXNativeTarget "UIMenuItem_CXAImageSupport" */;
+			buildPhases = (
+				B0D69B5F1D036944003B4CCD /* Sources */,
+				B0D69B611D036944003B4CCD /* Frameworks */,
+				B0D69B621D036944003B4CCD /* Headers */,
+				B0D69B651D036944003B4CCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIMenuItem_CXAImageSupport;
+			productName = ImageMenuItem;
+			productReference = B0D69B691D036944003B4CCD /* UIMenuItem_CXAImageSupport.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		E09B629D1AD7A57900A8CB79 /* ImageMenuItem */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E09B62B41AD7A57900A8CB79 /* Build configuration list for PBXNativeTarget "ImageMenuItem" */;
@@ -126,11 +171,19 @@
 			projectRoot = "";
 			targets = (
 				E09B629D1AD7A57900A8CB79 /* ImageMenuItem */,
+				B0D69B5E1D036944003B4CCD /* UIMenuItem_CXAImageSupport */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B0D69B651D036944003B4CCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E09B629C1AD7A57900A8CB79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +194,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B0D69B5F1D036944003B4CCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0D69B601D036944003B4CCD /* UIMenuItem+CXAImageSupport.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E09B62991AD7A57900A8CB79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +213,42 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		B0D69B671D036944003B4CCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/UIMenuItem+CXAImageSupport.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lazyapps.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B0D69B681D036944003B4CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/UIMenuItem+CXAImageSupport.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lazyapps.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		E09B62B21AD7A57900A8CB79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -278,6 +375,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B0D69B661D036944003B4CCD /* Build configuration list for PBXNativeTarget "UIMenuItem_CXAImageSupport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0D69B671D036944003B4CCD /* Debug */,
+				B0D69B681D036944003B4CCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E09B62981AD7A57900A8CB79 /* Build configuration list for PBXProject "ImageMenuItem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
